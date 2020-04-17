@@ -2,6 +2,8 @@
 
 ## Link to Deployed Project
 
+<http://countries-api.surge.sh/>
+
 ## Installation Instructions
 
 * git clone <https://github.com/DanThomp507/Countries-API>

@@ -43,8 +43,8 @@ export class Home extends React.Component {
 
     return (
       <div className='container' darktheme={this.state.darkTheme.toString()}>
-        
-        <TopBar 
+
+        <TopBar
           darkTheme={this.state.darkTheme}
           onInput={() => this.themeToggle()} />
 
@@ -68,6 +68,8 @@ export class Home extends React.Component {
             <option value='Oceania'>Oceania</option>
           </select>
         </div>
+
+
         <div className='countries'>
           {countries.map(country => {
             return (
@@ -78,8 +80,8 @@ export class Home extends React.Component {
                   selectedCountry: country,
                   darkTheme: this.state.darkTheme
                 }
-              }} 
-              style={{ textDecoration: 'none' }} key={country.name}>
+              }}
+                style={{ textDecoration: 'none' }} key={country.name}>
                 <CountryCard data={country} darkTheme={this.state.darkTheme.toString()} />
               </Link>
             )

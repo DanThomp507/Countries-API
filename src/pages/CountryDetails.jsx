@@ -15,8 +15,8 @@ export class CountryDetails extends React.Component {
   }
 
   changeTheme = () => {
-    this.setState({ 
-      darkTheme: !this.state.darkTheme 
+    this.setState({
+      darkTheme: !this.state.darkTheme
     })
   }
 
@@ -25,7 +25,7 @@ export class CountryDetails extends React.Component {
 
     return (
       <div className="container" darktheme={this.state.darkTheme.toString()}>
-          <TopBar 
+        <TopBar
           darkTheme={this.state.darkTheme}
           onInput={this.changeTheme} />
 
@@ -45,27 +45,27 @@ export class CountryDetails extends React.Component {
         <div className="data-container">
           <img src={selectedCountry.flag} style={{ width: '100%', maxWidth: '36vw', alignSelf: 'center', justifySelf: 'center' }} alt="selectedCountry flag" />
           <div className="text-container">
-            <div className="selectedCountry-name">{selectedCountry.name}</div>
+            <div className="country-name">{selectedCountry.name}</div>
             <div className="first-container">
               <div>
                 <span className="content-title">Native Name: </span>
-                <span className="selectedCountry-content">{selectedCountry.nativeName}</span>
+                <span className="country-content">{selectedCountry.nativeName}</span>
               </div>
               <div>
                 <span className="content-title">Population: </span>
-                <span className="selectedCountry-content">{selectedCountry.population.toLocaleString()}</span>
+                <span className="country-content">{selectedCountry.population.toLocaleString()}</span>
               </div>
               <div>
                 <span className="content-title">Region: </span>
-                <span className="selectedCountry-content">{selectedCountry.region}</span>
+                <span className="country-content">{selectedCountry.region}</span>
               </div>
               <div>
                 <span className="content-title">Sub Region: </span>
-                <span className="selectedCountry-content">{selectedCountry.subregion}</span>
+                <span className="country-content">{selectedCountry.subregion}</span>
               </div>
               <div>
                 <span className="content-title">Capital: </span>
-                <span className="selectedCountry-content">{selectedCountry.capital}</span>
+                <span className="country-content">{selectedCountry.capital}</span>
               </div>
             </div>
             <div className="second-container">
@@ -73,7 +73,7 @@ export class CountryDetails extends React.Component {
                 <span className="content-title">Top Level Domain: </span>
                 {
                   selectedCountry.topLevelDomain.map(domainName => {
-                    return <span className="selectedCountry-content" key={domainName}>{domainName}</span>
+                    return <span className="country-content" key={domainName}>{domainName}</span>
                   })
                 }
               </div>
@@ -93,10 +93,10 @@ export class CountryDetails extends React.Component {
 
             {selectedCountry.borders.length > 0 &&
               <div className="border-countries-container">
-              <div className="sub-title">
-                Border Countries:
+                <div className="sub-title">
+                  Border Countries:
              </div>
-              {selectedCountry.borders.map(borderselectedCountryCode => {
+                {selectedCountry.borders.map(borderselectedCountryCode => {
                   let borderselectedCountry = countries.find((value) => value.alpha3Code === borderselectedCountryCode)
 
                   return (
@@ -105,8 +105,8 @@ export class CountryDetails extends React.Component {
                     </div>
                   )
                 })
-              }
-            </div>
+                }
+              </div>
             }
 
           </div>

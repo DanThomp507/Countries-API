@@ -46,7 +46,7 @@ export class Home extends React.Component {
         
         <TopBar 
           darkTheme={this.state.darkTheme}
-          onInput={this.themeToggle} />
+          onInput={() => this.themeToggle()} />
 
         <div className='search-container'>
           <div className='search-bar'>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TopBar = ({ onInput, darkTheme } ) => (
+export const TopBar = ({ onInput, darkTheme }) => (
   <div className="top-bar">
     <span className="logo">Countries API</span>
     <label htmlFor="theme-toggle-checkbox" className="theme-changer-container">

@@ -4,7 +4,7 @@ import './../css/index.css';
 import './../css/variables.css';
 import { TopBar } from '../components/TopBar';
 import { CountryCard } from '../components/CountryCard';
-import { SearchIcon } from '../components/SearchIcon';
+import { SearchContainer } from '../components/SearchContainer';
 
 export class Home extends React.Component {
   constructor(props) {
@@ -49,23 +49,21 @@ export class Home extends React.Component {
           darkTheme={this.state.darkTheme}
           onInput={() => this.themeToggle()} />
 
-        <div className='search-container'>
-          <div className='search-bar'>
-           <SearchIcon 
-           darkTheme={this.state.darkTheme}
-            />
-            <input type='text' id='search-input' className='search-input' onInput={event => { event.persist(); this.setState({ searchItem: event.target.value }) }} />
-          </div>
-
-          <select className='filter' placeholder='Filter By Region' onInput={event => { event.persist(); this.setState({ region: event.target.value }) }}>
-            <option value=''>Filter By Region</option>
-            <option value='Africa'>Africa</option>
-            <option value='Americas'>Americas</option>
-            <option value='Asia'>Asia</option>
-            <option value='Europe'>Europe</option>
-            <option value='Oceania'>Oceania</option>
-          </select>
-        </div>
+        <SearchContainer
+          darkTheme={this.state.darkTheme}
+          onSearchInput={event => {
+            event.persist();
+            this.setState({
+              searchItem: event.target.value
+            })
+          }}
+          onRegionInput={event => {
+            event.persist();
+            this.setState({
+              region: event.target.value
+            })
+          }}
+        />
 
 
         <div className='countries'>

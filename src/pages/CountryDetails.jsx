@@ -37,7 +37,7 @@ export class CountryDetails extends React.Component {
             darkTheme: this.state.darkTheme
           }
         }} className="go-back">
-         <BackButton />
+          <BackButton />
         Back
         </Link>
 

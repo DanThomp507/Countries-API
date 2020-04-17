@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CountryData = ({selectedCountry, countries} ) => (
+export const CountryData = ({ selectedCountry, countries } ) => (
 
     <div className="data-container">
     <img src={selectedCountry.flag} style={{ width: '100%', maxWidth: '36vw', alignSelf: 'center', justifySelf: 'center' }} alt="selectedCountry flag" />

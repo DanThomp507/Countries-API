@@ -76,7 +76,6 @@
 
 @media (min-width: 376px) {
   .data-container {
-    /* -ms-grid-columns: (50%)[2]; */
     grid-template-columns: repeat(2, 50%);
   }
 }
@@ -112,7 +111,6 @@
 
 @media (min-width: 769px) {
   .text-container {
-    /* -ms-grid-columns: (1fr)[2]; */
     grid-template-columns: repeat(2, 1fr);
   }
 }

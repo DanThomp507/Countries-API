@@ -5,11 +5,9 @@ html {
 
 body {
   overflow-x: hidden;
-  /* TEST fix non smooth scrolling iOS mobile */
   overflow-y: scroll; /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;
   text-align: center;
-  /* font-family: "Open Sans", sans-serif; */
   background: #e9e9e9;
 }
 
@@ -169,7 +167,6 @@ body {
 }
 
 .search-container .filter {
-  /* font-family: 'Nunito Sans'; */
   border: none;
   font-weight: 600;
   padding: 4px 10px;
@@ -191,7 +188,6 @@ body {
 }
 
 .search-container .filter option {
-  /* font-family: 'Nunito Sans'; */
   font-weight: 600;
 }
 
@@ -231,11 +227,7 @@ body {
   background: var(--elements);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.6) 0px 10px 0.5rem -0.5rem;
-  /* border-radius: 4px;
-    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.336);
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.336); */
-  height: 400px;
-  max-height: 410px;
+  height: 350px;
   max-width: 300px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -250,7 +242,6 @@ body {
 }
 
 .name {
-  /* font-family: 'Nunito Sans'; */
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 4%;
@@ -263,13 +254,6 @@ body {
 .content-type {
   font-weight: 600;
 }
-
-/* .country-card-container {
-      border-radius: 5px;
-      margin: 0 2.5rem;
-      box-shadow: rgba(0, 0, 0, 0.6) 0px 10px 0.5rem -0.5rem;
-      width: 100%;
-    } */
 
 @media (max-width: 375px) {
   .countries {

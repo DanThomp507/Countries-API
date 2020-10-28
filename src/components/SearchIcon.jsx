@@ -7,4 +7,4 @@ export const SearchIcon = ({ darkTheme }) => (
       style={{ stroke: darkTheme ? 'black' : 'white', fill: !darkTheme ? 'black' : 'white' }}
     />
   </svg>
-)
+);

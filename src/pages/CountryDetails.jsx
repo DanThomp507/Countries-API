@@ -6,47 +6,40 @@ import { BackButton } from '../components/BackButton'
 import './../css/variables.css';
 import './../css/details.css';
 
-export class CountryDetails extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      darkTheme: props.location.state.darkTheme || false,
-      selectedCountry: props.location.state.selectedCountry,
-      countries: props.location.state.countries
+export const CountryDetails = (props) => {
+  const [darkTheme, setDarkTheme] = React.useState(props.location?.state?.darkTheme || false);
+  const [selectedCountry, setSelectedCountry] = React.useState(props?.location?.state?.selectedCountry || null);
+  const [countries, setCountries] = React.useState(props?.location?.state?.countries || null);
+
+  React.useEffect(() => {
+    if (props) {
+      setDarkTheme(props?.location?.state?.darkTheme);
+      setSelectedCountry(props?.location?.state?.selectedCountry);
+      setCountries(props?.location?.state?.countries);
     }
-  }
+  }, [props]);
 
-  changeTheme = () => {
-    this.setState({
-      darkTheme: !this.state.darkTheme
-    })
-  }
+  return (
+    <div className="container" darktheme={darkTheme.toString()}>
+      <TopBar
+        darkTheme={darkTheme}
+        onInput={() => setDarkTheme(!darkTheme)} />
 
-  render() {
-    const { selectedCountry, countries } = this.state
-
-    return (
-      <div className="container" darktheme={this.state.darkTheme.toString()}>
-        <TopBar
-          darkTheme={this.state.darkTheme}
-          onInput={this.changeTheme} />
-
-        <Link to={{
-          pathname: '/',
-          state: {
-            darkTheme: this.state.darkTheme
-          }
-        }} className="go-back">
-          <BackButton />
+      <Link to={{
+        pathname: '/',
+        state: {
+          darkTheme: darkTheme
+        }
+      }}
+        className="go-back">
+        <BackButton />
         Back
         </Link>
 
-        <CountryData
-          countries={countries}
-          selectedCountry={selectedCountry}
-        />
-
-      </div>
-    )
-  }
-}
+      <CountryData
+        countries={countries}
+        selectedCountry={selectedCountry}
+      />
+    </div>
+  )
+};

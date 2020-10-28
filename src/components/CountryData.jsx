@@ -1,8 +1,7 @@
 import React from 'react';
 
-export const CountryData = ({ selectedCountry, countries } ) => (
-
-    <div className="data-container">
+export const CountryData = ({ selectedCountry, countries }) => (
+  <div className="data-container">
     <img src={selectedCountry.flag} style={{ width: '100%', maxWidth: '36vw', alignSelf: 'center', justifySelf: 'center' }} alt="selectedCountry flag" />
     <div className="text-container">
       <div className="country-name">{selectedCountry.name}</div>
@@ -31,23 +30,17 @@ export const CountryData = ({ selectedCountry, countries } ) => (
       <div className="second-container">
         <div>
           <span className="content-title">Top Level Domain: </span>
-          {
-            selectedCountry.topLevelDomain.map(domainName => {
-              return <span className="country-content" key={domainName}>{domainName}</span>
-            })
-          }
+          {selectedCountry.topLevelDomain.map(domainName => (
+            <span className="country-content" key={domainName}>{domainName}</span>
+          ))}
         </div>
         <div>
           <span className="content-title">Currencies: </span>
-          {
-            selectedCountry.currencies.map(currency => currency.name).join(', ')
-          }
+          {selectedCountry.currencies.map(currency => currency.name).join(', ')}
         </div>
         <div>
           <span className="content-title">Languages: </span>
-          {
-            selectedCountry.languages.map(language => language.name).join(', ')
-          }
+          {selectedCountry.languages.map(language => language.name).join(', ')}
         </div>
       </div>
 
@@ -64,11 +57,8 @@ export const CountryData = ({ selectedCountry, countries } ) => (
                 <span>{borderselectedCountry.name}</span>
               </div>
             )
-          })
-          }
-        </div>
-      }
-
+          })}
+        </div>}
     </div>
   </div>
 )

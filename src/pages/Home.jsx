@@ -6,84 +6,67 @@ import { TopBar } from '../components/TopBar';
 import { CountryCard } from '../components/CountryCard';
 import { SearchContainer } from '../components/SearchContainer';
 
-export class Home extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      countries: [],
-      darkTheme: props.location.state ? props.location.state.darkTheme : false,
-      region: '',
-      searchItem: ''
+export const Home = (props) => {
+  const [darkTheme, setDarkTheme] = React.useState(props.location.state ? props.location.state.darkTheme : false);
+  let [countries, setCountries] = React.useState([]);
+  const [region, setRegion] = React.useState('');
+  const [searchItem, setSearchItem] = React.useState('');
+
+
+  React.useEffect(() => {
+    async function fetchData() {
+      let response = await fetch('https://restcountries.eu/rest/v2/all');
+      let json = await response.json();
+      setCountries(json)
     }
-  }
+    fetchData();
 
-  componentDidMount() {
-    this.fetchData()
-  }
+    if (props) {
+      setDarkTheme(props?.location?.state?.darkTheme);
+    }
+  }, [props]);
 
-  async fetchData() {
-    let response = await fetch('https://restcountries.eu/rest/v2/all')
-    let json = await response.json()
+  countries = countries.filter((country) => (
+    country.name.toLocaleUpperCase().includes(searchItem.toLocaleUpperCase()) && (region === '' || country.region === region)
+  ))
 
-    this.setState({
-      countries: json
-    })
-  }
+  return (
+    <div className='container' darktheme={darkTheme.toString()}>
 
-  themeToggle = () => {
-    this.setState({
-      darkTheme: !this.state.darkTheme
-    })
-  }
+      <TopBar
+        darkTheme={darkTheme}
+        onInput={() => setDarkTheme(!darkTheme)} />
 
-  render() {
-
-    let countries = this.state.countries.filter((country) => {
-      return country.name.toLocaleUpperCase().includes(this.state.searchItem.toLocaleUpperCase()) && (this.state.region === '' || country.region === this.state.region)
-    })
-
-    return (
-      <div className='container' darktheme={this.state.darkTheme.toString()}>
-
-        <TopBar
-          darkTheme={this.state.darkTheme}
-          onInput={() => this.themeToggle()} />
-
-        <SearchContainer
-          darkTheme={this.state.darkTheme}
-          onSearchInput={event => {
-            event.persist();
-            this.setState({
-              searchItem: event.target.value
-            })
-          }}
-          onRegionInput={event => {
-            event.persist();
-            this.setState({
-              region: event.target.value
-            })
-          }}
-        />
+      <SearchContainer
+        darkTheme={darkTheme}
+        onSearchInput={event => {
+          event.persist();
+          setSearchItem(event.target.value);
+        }}
+        onRegionInput={event => {
+          event.persist();
+          setRegion(event.target.value);
+        }}
+      />
 
 
-        <div className='countries'>
-          {countries.map(country => {
-            return (
-              <Link to={{
-                pathname: '/details',
-                state: {
-                  countries: this.state.countries,
-                  selectedCountry: country,
-                  darkTheme: this.state.darkTheme
-                }
-              }}
-                style={{ textDecoration: 'none' }} key={country.name}>
-                <CountryCard data={country} darkTheme={this.state.darkTheme.toString()} />
-              </Link>
-            )
-          })}
-        </div>
+      <div className='countries'>
+        {countries.map(country => {
+          return (
+            <Link to={{
+              pathname: '/details',
+              state: {
+                countries: countries,
+                selectedCountry: country,
+                darkTheme: darkTheme
+              }
+            }}
+              style={{ textDecoration: 'none' }} key={country.name}>
+              <CountryCard data={country} darkTheme={darkTheme.toString()} />
+            </Link>
+          )
+        })}
       </div>
-    )
-  }
-}
+    </div>
+  )
+};

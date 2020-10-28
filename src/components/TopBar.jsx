@@ -17,6 +17,5 @@ export const TopBar = ({ onInput, darkTheme }) => (
   </span>
       </span>
     </label>
-
   </div>
 )

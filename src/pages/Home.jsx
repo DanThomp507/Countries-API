@@ -31,7 +31,7 @@ export const Home = (props) => {
   ))
 
   return (
-    <div className='container' darktheme={darkTheme.toString()}>
+    <div className='container' darktheme={darkTheme?.toString()}>
 
       <TopBar
         darkTheme={darkTheme}
@@ -62,7 +62,7 @@ export const Home = (props) => {
               }
             }}
               style={{ textDecoration: 'none' }} key={country.name}>
-              <CountryCard data={country} darkTheme={darkTheme.toString()} />
+              <CountryCard data={country} darkTheme={darkTheme?.toString()} />
             </Link>
           )
         })}
